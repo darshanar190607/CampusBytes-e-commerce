@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback - Campusbytes</title>
+    <style>
+        *{
+            text-decoration: none;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        header {
+            background: #ff8000;
+            color: white;
+            padding: 1rem 2rem;
+            text-align: center;
+            color: #f4f4f4;
+        }
+
+        header h1 a {
+            margin: 0;
+            color:white;
+        }
+
+        nav {
+            background: #ff8000;
+            padding: 0.5rem 2rem;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 2rem auto;
+            background: white;
+            padding: 2rem;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        input, textarea {
+            margin-bottom: 1rem;
+            padding: 0.8rem;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .submit-btn {
+            background-color: #ff8000;
+            color: white;
+            padding: 1rem;
+            font-size: 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .submit-btn:hover {
+            background-color: #ff8000;
+        }
+
+        .success-message {
+            margin-top: 20px;
+            color: green;
+            font-size: 1.2rem;
+            text-align: center;
+        }
+
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1><a href="new1.html">CampusBytes</a></h1>
+    </header>
+
+
+        <h2>Feedback</h2>
+        <p>We'd love to hear from you! If you have any questions or feedback, please reach out using the form below:</p>
+
+        <!-- Contact Form -->
+        <form id="contact-form" onsubmit="return handleContactForm(event)">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="message">Your Message</label>
+            <textarea id="message" name="message" required></textarea>
+
+            <button type="submit" class="submit-btn">Send Message</button>
+        </form>
+
+        <!-- Success message -->
+        <div class="success-message" id="success-message" style="display: none;">
+            <p>Thank you for contacting us! We will get back to you soon.</p>
+        </div>
+    </div>
+    <footer>
+        <p>2024 Campusbytes | Designed with love for foods</p>
+    </footer>
+
+    <script>
+        function handleContactForm(event) {
+            // Prevent form submission to simulate the form handling
+            event.preventDefault();
+
+            // Hide the form
+            document.getElementById("contact-form").style.display = "none";
+
+            // Show the success message
+            document.getElementById("success-message").style.display = "block";
+        }
+    </script>
+</body>
+</html>

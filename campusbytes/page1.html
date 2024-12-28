@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Amenity - Menu</title>
+  <style>
+    *{
+      text-decoration: none;
+      color: black;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #e8f0f7;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    header {
+      width: 100%;
+      background-color: #ffffff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      padding: 20px 0;
+      position: fixed;
+      top: 0;
+      z-index: 100;
+    }
+
+    header h1 {
+      margin: 10px 0;
+      color: #333;
+    }
+
+    main {
+      margin-top: 120px;
+      width: 90%;
+      max-width: 600px;
+      padding: 20px;
+      background: #ffffff;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+      border-radius: 10px;
+    }
+
+    h2 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    p.description {
+      text-align: justify;
+      font-size: 1.1em;
+      color: #555;
+      margin-bottom: 20px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      background: #f9f9f9;
+      padding: 15px;
+      margin: 10px 0;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    li span {
+      flex: 1;
+      font-weight: bold;
+      color: #555;
+    }
+
+    li .price {
+      margin-right: 20px;
+      font-size: 1em;
+      color: #333;
+    }
+
+    input[type="number"] {
+      width: 50px;
+      margin: 0 10px;
+      padding: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      padding: 8px 12px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    .view-cart {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #28a745;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+      display: inline-block;
+    }
+
+    .view-cart:hover {
+      background-color: #218838;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1><a href="new1.html">Amenity - Menu</a></h1>
+  </header>
+  <main>
+    <h2>Our Special Menu</h2>
+    <p class="description">
+      "Amenity is your all-day dining spot! From flavorful biryani starting at just ₹100 to a variety of snacks, it’s the perfect place to grab a meal, relax, and enjoy quality food at affordable prices—any time of the day."
+    </p>
+    <ul>
+      <!-- Menu Items -->
+      <li>
+        <span>Vegetable Biryani</span>
+        <span class="price">₹100</span>
+        <input type="number" id="quantity-veg-biryani" min="1" value="1">
+        <button onclick="addToCart('Vegetable Biryani', 100, 'quantity-veg-biryani')">Add to Cart</button>
+      </li>
+      <li>
+        <span>Chicken Biryani</span>
+        <span class="price">₹150</span>
+        <input type="number" id="quantity-chicken-biryani" min="1" value="1">
+        <button onclick="addToCart('Chicken Biryani', 150, 'quantity-chicken-biryani')">Add to Cart</button>
+      </li>
+      <li>
+        <span>Mutton Biryani</span>
+        <span class="price">₹200</span>
+        <input type="number" id="quantity-mutton-biryani" min="1" value="1">
+        <button onclick="addToCart('Mutton Biryani', 200, 'quantity-mutton-biryani')">Add to Cart</button>
+      </li>
+      <li>
+        <span>Butter Chicken</span>
+        <span class="price">₹180</span>
+        <input type="number" id="quantity-butter-chicken" min="1" value="1">
+        <button onclick="addToCart('Butter Chicken', 180, 'quantity-butter-chicken')">Add to Cart</button>
+      </li>
+      <li>
+        <span>Veg Hakka Noodles</span>
+        <span class="price">₹120</span>
+        <input type="number" id="quantity-veg-hakka-noodles" min="1" value="1">
+        <button onclick="addToCart('Veg Hakka Noodles', 120, 'quantity-veg-hakka-noodles')">Add to Cart</button>
+      </li>
+      <li>
+        <span>Chicken 65</span>
+        <span class="price">₹150</span>
+        <input type="number" id="quantity-chicken65" min="1" value="1">
+        <button onclick="addToCart('Chicken 65', 150, 'quantity-chicken65')">Add to Cart</button>
+      </li>
+      <li>
+        <span>Masala Dosa</span>
+        <span class="price">₹50</span>
+        <input type="number" id="quantity-masala-dosa" min="1" value="1">
+        <button onclick="addToCart('Masala Dosa', 50, 'quantity-masala-dosa')">Add to Cart</button>
+      </li>
+      <li>
+        <span>Paneer Paratha</span>
+        <span class="price">₹60</span>
+        <input type="number" id="quantity-paneer-paratha" min="1" value="1">
+        <button onclick="addToCart('Paneer Paratha', 60, 'quantity-paneer-paratha')">Add to Cart</button>
+      </li>
+      <li>
+        <span>Gulab Jamun</span>
+        <span class="price">₹30</span>
+        <input type="number" id="quantity-gulab-jamun" min="1" value="1">
+        <button onclick="addToCart('Gulab Jamun', 30, 'quantity-gulab-jamun')">Add to Cart</button>
+      </li>
+      <li>
+        <span>Ice Cream Sundae</span>
+        <span class="price">₹70</span>
+        <input type="number" id="quantity-ice-cream" min="1" value="1">
+        <button onclick="addToCart('Ice Cream Sundae', 70, 'quantity-ice-cream')">Add to Cart</button>
+      </li>
+    </ul>
+    <a href="cart.html" class="view-cart">View Cart</a>
+  </main>
+
+  <script>
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    function addToCart(item, price, quantityId) {
+      const quantity = parseInt(document.getElementById(quantityId).value); // Get quantity from input
+
+      // Check if the item exists and add it to the cart
+      const cartItem = { item, price, quantity };
+
+      // Check if the item already exists in the cart
+      const existingItemIndex = cart.findIndex(cartItem => cartItem.item === item);
+
+      if (existingItemIndex > -1) {
+        // If the item already exists, update the quantity
+        cart[existingItemIndex].quantity += quantity;
+      } else {
+        // If the item doesn't exist, add it to the cart array
+        cart.push(cartItem);
+      }
+
+      // Save the updated cart back to localStorage
+      localStorage.setItem('cart', JSON.stringify(cart));
+
+      // Alert the user with the name of the item added to the cart
+      alert(`${quantity} x ${item} added to cart!`);
+    }
+  </script>
+</body>
+</html>

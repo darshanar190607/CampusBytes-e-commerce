@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Cart</title>
+  <style>
+    *{
+      text-decoration: none;
+      color: black;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f9fa;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    header {
+      width: 100%;
+      background-color: #ffffff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      padding: 20px 0;
+    }
+
+    header h1 {
+      margin: 10px 0;
+      color: #333;
+    }
+
+    .cart-container {
+      margin-top: 60px;
+      width: 90%;
+      max-width: 600px;
+      padding: 20px;
+      background: #ffffff;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+      border-radius: 10px;
+    }
+
+    h2 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    table, th, td {
+      border: 1px solid #ddd;
+    }
+
+    th, td {
+      padding: 10px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f1f1f1;
+    }
+
+    .total-price {
+      text-align: right;
+      margin-top: 20px;
+      font-size: 1.2em;
+      font-weight: bold;
+    }
+
+    .checkout-button {
+      display: block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #28a745;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+      text-align: center;
+    }
+
+    .checkout-button:hover {
+      background-color: #218838;
+    }
+
+    .remove-button {
+      color: red;
+      cursor: pointer;
+      background: none;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1><a href="new1.html">Your Cart</a></h1>
+  </header>
+  <div class="cart-container">
+    <h2>Items in Your Cart</h2>
+    <table id="cart-table">
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>Quantity</th>
+          <th>Price</th>
+          <th>Total</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Cart items will be dynamically added here -->
+      </tbody>
+    </table>
+    <div class="total-price">
+      Total: ₹<span id="total-price">0</span>
+    </div>
+    <a href="complete_purchase.html" class="checkout-button" id="proceed-to-checkout">Proceed to Checkout</a>
+  </div>
+
+  <script>
+    // Retrieve cart data from localStorage
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    // Function to display cart items
+    function displayCart() {
+      const cartTable = document.getElementById('cart-table').getElementsByTagName('tbody')[0];
+      const totalPriceElement = document.getElementById('total-price');
+      let totalPrice = 0;
+
+      // Clear the current table content
+      cartTable.innerHTML = '';
+
+      // Loop through cart items and add them to the table
+      cart.forEach((item, index) => {
+        const row = cartTable.insertRow();
+
+        const cell1 = row.insertCell(0);
+        const cell2 = row.insertCell(1);
+        const cell3 = row.insertCell(2);
+        const cell4 = row.insertCell(3);
+        const cell5 = row.insertCell(4);  // This is for the Remove button
+
+        cell1.textContent = item.item;
+        cell2.textContent = item.quantity;
+        cell3.textContent = '₹' + item.price;
+        cell4.textContent = '₹' + (item.price * item.quantity);
+
+        // Create Remove button
+        const removeButton = document.createElement('button');
+        removeButton.textContent = 'Remove';
+        removeButton.classList.add('remove-button');
+        removeButton.addEventListener('click', () => removeItem(index));  // Pass the item index for removal
+        cell5.appendChild(removeButton);
+
+        totalPrice += item.price * item.quantity;
+      });
+
+      // Update total price
+      totalPriceElement.textContent = totalPrice;
+    }
+
+    // Function to remove an item from the cart
+    function removeItem(index) {
+      // Remove the item from the cart array
+      cart.splice(index, 1);
+
+      // Update the cart in localStorage
+      localStorage.setItem('cart', JSON.stringify(cart));
+
+      // Re-display the cart
+      displayCart();
+    }
+
+    // Store cart data in sessionStorage for the payment page
+    document.getElementById('proceed-to-checkout').addEventListener('click', function() {
+      sessionStorage.setItem('cart', JSON.stringify(cart));
+    });
+
+    // Call the function to display the cart items
+    displayCart();
+  </script>
+</body>
+</html>

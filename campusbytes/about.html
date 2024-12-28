@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <style>
+        *{
+            text-decoration: none;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(270deg, #ff7e5f, #feb47b);
+            background-size: 400% 400%;
+            animation: gradientBackground 8s ease infinite;
+            overflow: hidden;
+            position: relative;
+        }
+
+        @keyframes gradientBackground {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .color-shrink {
+            position: absolute;
+            pointer-events: none;
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, rgba(255, 182, 193, 0.7) 0%, rgba(255, 105, 180, 0.3) 50%, transparent 80%);
+            border-radius: 50%;
+            transform: scale(0);
+            transition: transform 0.2s ease-out;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        h1 {
+            text-align: center;
+            color: #4caf50;
+            margin-bottom: 20px;
+        }
+        h1 a{
+            color: #4caf50;
+            margin-bottom: 20px;
+        }
+
+        .team {
+            text-align: center;
+        }
+
+        .team-member {
+            margin-bottom: 20px;
+        }
+
+        .team-member h2 {
+            margin: 10px 0 5px;
+            font-size: 1.5rem;
+            color: #333;
+        }
+
+        .team-member p {
+            margin: 0;
+            color: #777;
+        }
+
+        .social-icons {
+            margin-top: 10px;
+        }
+
+        .social-icons a {
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .social-icons img {
+            width: 24px;
+            height: 24px;
+        }
+
+        .social-icons a:hover img {
+            filter: brightness(1.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1><a href="new1.html">About Us</a></h1>
+        <p>This project is a collaborative effort by four enthusiastic developers who worked together to bring this fast-food website to life for a college project. Each member contributed equally to ensure the success of this website.</p>
+
+        <div class="team">
+            <div class="team-member">
+                <h2>Darshan AR</h2>
+                <p>Developer</p>
+                <div class="social-icons">
+                    <a href="https://instagram.com/darshan" target="_blank">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
+                    </a>
+                    <a href="https://github.com/darshan" target="_blank">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg" alt="GitHub">
+                    </a>
+                    <a href="https://linkedin.com/in/darshan" target="_blank">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" alt="LinkedIn">
+                    </a>
+                </div>
+            </div>
+
+            <div class="team-member">
+                <h2>Sudhir</h2>
+                <p>Developer</p>
+                <div class="social-icons">
+                    <a href="https://instagram.com/sudhir" target="_blank">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
+                    </a>
+                    <a href="https://github.com/sudhir" target="_blank">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg" alt="GitHub">
+                    </a>
+                    <a href="https://linkedin.com/in/sudhir" target="_blank">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" alt="LinkedIn">
+                    </a>
+                </div>
+            </div>
+
+            <div class="team-member">
+                <h2>Kabil</h2>
+                <p>Developer</p>
+                <div class="social-icons">
+                    <a href="https://instagram.com/kabil" target="_blank">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
+                    </a>
+                    <a href="https://github.com/kabil" target="_blank">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg" alt="GitHub">
+                    </a>
+                    <a href="https://linkedin.com/in/kabil" target="_blank">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" alt="LinkedIn">
+                    </a>
+                </div>
+            </div>
+
+            <div class="team-member">
+                <h2>Gokulnath</h2>
+                <p>Poster Designer and Content Creator</p>
+                <div class="social-icons">
+                    <a href="https://instagram.com/gokulnath" target="_blank">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
+                    </a>
+                    <a href="https://github.com/gokulnath" target="_blank">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg" alt="GitHub">
+                    </a>
+                    <a href="https://linkedin.com/in/gokulnath" target="_blank">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" alt="LinkedIn">
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <p style="text-align: center; margin-top: 30px;">Together, we have built this website to showcase our skills and create an enjoyable user experience. We hope you enjoy it!</p>
+    </div>
+
+    <div class="color-shrink" id="shrinkEffect"></div>
+
+    <script>
+        const shrinkEffect = document.getElementById('shrinkEffect');
+
+        document.addEventListener('mousemove', (e) => {
+            shrinkEffect.style.transform = 'scale(1)';
+            shrinkEffect.style.left = ${e.pageX - 75}px;
+            shrinkEffect.style.top = ${e.pageY - 75}px;
+        });
+
+        document.addEventListener('mouseleave', () => {
+            shrinkEffect.style.transform = 'scale(0)';
+        });
+    </script>
+</body>
+</html>

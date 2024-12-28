@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Offer Page</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <style>
+        /* Your existing CSS code here */
+
+        /* Add styles for the cart and product */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            background-color: #f4f4f4;
+        }
+
+        .navbar {
+            background-color: #ff8000;
+            padding: 10px 20px;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 18px;
+        }
+
+        .navbar .logo {
+            font-size: 20px;
+            font-weight: bold;
+            color: white;
+        }
+
+        .navbar button {
+            background-color: transparent;
+            color: white;
+            border: none;
+            font-size: 30px; /* Larger icon size */
+            cursor: pointer;
+            align-items: end;
+            margin-right: 25px;
+        }
+
+        .navbar button:hover {
+            color: #ffbb33; /* Change color on hover for better visibility */
+        }
+
+        .w3-sidebar {
+            position: fixed;
+            width: 0;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background-color: #111;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+            color: white;
+        }
+
+        .w3-sidebar a {
+            padding: 10px 15px;
+            text-decoration: none;
+            font-size: 22px;
+            color: white;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .w3-sidebar a:hover {
+            padding: 10px 15px;
+            color: #f1f1f1;
+        }
+
+        .offers-carousel {
+            width: 100%;
+            max-width: 600px;
+            margin: auto;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .carousel-slides {
+            display: flex;
+            transition: transform 1s ease-in-out;
+        }
+
+        .carousel-slide {
+            flex: 0 0 100%; /* Each slide takes 100% of the container width */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .carousel-controls {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+
+        .carousel-controls button {
+            background: rgba(0, 0, 0, 0.5);
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        .carousel-controls button:hover {
+            background: rgba(0, 0, 0, 0.8);
+        }
+        .products {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 20px;
+            gap: 20px;
+        }
+
+        .product {
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            width: 230px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .product img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .product h3 {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+
+        .product p {
+            font-size: 14px;
+            margin: 5px 0;
+            color: #555;
+        }
+
+        .product .price {
+            font-size: 16px;
+            font-weight: bold;
+            color: #e53935;
+        }
+
+        .product .quantity-controls {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin: 10px 0;
+        }
+
+        .product .quantity-controls button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .product .quantity-controls button:hover {
+            background-color: #0056b3;
+        }
+
+        .product .add-to-cart {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+
+        .product .add-to-cart:hover {
+            background-color: #218838;
+        }
+
+        .product .buy-now {
+            background-color: #f0ad4e;
+            color: white;
+            border: none;
+            padding: 10px;
+            font-size: 14px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        
+ /* Pop-up Subscription */
+        .popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 10;
+            border-radius: 8px;
+        }
+        .popup button {
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 9;
+        }
+
+        .product .buy-now:hover {
+            background-color: #ec971f;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Pop-up Subscription -->
+    <div class="popup-overlay" id="popup-overlay"></div>
+    <div class="popup" id="popup">
+        <p>Subscribe to SECE Account for exclusive offers!</p>
+        <button onclick="closePopup()">Close</button>
+    </div>
+    <!-- Sidebar -->
+    <div class="w3-sidebar" id="mySidebar">
+        <a href="javascript:void(0)" onclick="closeNav()">×</a>
+        <a href="nothing.html">Menu</a>
+        <a href="preorder.html">Pre-Order</a>
+        <a href="signup.html">Signup</a>
+        <a href="about.html">About Us</a>
+        <a href="feedback.html">Feedback</a>
+    </div>
+
+
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="logo">CampusBytes</div>
+        <button onclick="window.location.href='fdisc.html'" style="margin-left: auto;">Flash Discount</button>
+        <button onclick="window.location.href='cart.html'">🛒</button>
+        <button onclick="w3_open()">☰</button>
+    </div>
+
+    <!-- Offers Carousel -->
+    <div class="offers-carousel">
+        <div class="carousel-slides" id="carouselSlides">
+            <div class="carousel-slide">
+                <img src="Mario.jpg" alt="Offer 1">
+            </div>
+            <div class="carousel-slide">
+                <img src="mario offer.jpg" alt="Offer 2">
+            </div>
+            <div class="carousel-slide">
+                <img src="cafteria offer.jpg" alt="Offer 3">
+            </div>
+        </div>
+        <div class="carousel-controls">
+            <button onclick="prevSlide()">❮</button>
+            <button onclick="nextSlide()">❯</button>
+        </div>
+    </div>
+
+    <!-- Products Section -->
+    <div class="products">
+        <!-- Product 1 to 6 -->
+        <div class="product">
+            <img src="chick65.jpg" alt="Product 1">
+            <h3 id="product1-name">Chicken 65</h3>
+            <p>100gm</p>
+            <p class="price" id="product1-price">&#8377;50</p>
+            <div class="quantity-controls">
+                <button onclick="changeQuantity('product1', -1)">-</button>
+                <input type="text" id="product1-quantity" value="1" disabled>
+                <button onclick="changeQuantity('product1', 1)">+</button>
+            </div>
+            <button class="add-to-cart" onclick="addToCart('product1')">Add to Cart</button>
+            <button class="buy-now">Buy Now</button>
+        </div>
+
+        <div class="product">
+            <img src="biryani.jpg" alt="Product 2">
+            <h3 id="product2-name">Chicken Biryani</h3>
+            <p>1 plate</p>
+            <p class="price" id="product2-price">&#8377;120</p>
+            <div class="quantity-controls">
+                <button onclick="changeQuantity('product2', -1)">-</button>
+                <input type="text" id="product2-quantity" value="1" disabled>
+                <button onclick="changeQuantity('product2', 1)">+</button>
+            </div>
+            <button class="add-to-cart" onclick="addToCart('product2')">Add to Cart</button>
+            <button class="buy-now">Buy Now</button>
+        </div>
+
+        <div class="product">
+            <img src="filter.webp" alt="Product 3">
+            <h3 id="product3-name">Filter coffee</h3>
+            <p>100 ml</p>
+            <p class="price" id="product3-price">&#8377;20</p>
+            <div class="quantity-controls">
+                <button onclick="changeQuantity('product3', -1)">-</button>
+                <input type="text" id="product3-quantity" value="1" disabled>
+                <button onclick="changeQuantity('product3', 1)">+</button>
+            </div>
+            <button class="add-to-cart" onclick="addToCart('product3')">Add to Cart</button>
+            <button class="buy-now">Buy Now</button>
+        </div>
+
+        <div class="product">
+            <img src="burger.jpg" alt="Product 4">
+            <h3 id="product4-name"> Chicken Burger</h3>
+            <p>1 piece</p>
+            <p class="price" id="product4-price">&#8377;100</p>
+            <div class="quantity-controls">
+                <button onclick="changeQuantity('product4', -1)">-</button>
+                <input type="text" id="product4-quantity" value="1" disabled>
+                <button onclick="changeQuantity('product4', 1)">+</button>
+            </div>
+            <button class="add-to-cart" onclick="addToCart('product4')">Add to Cart</button>
+            <button class="buy-now">Buy Now</button>
+        </div>
+
+        <div class="product">
+            <img src="kitkat.jpg" alt="Product 5">
+            <h3 id="product5-name">KitKat shake</h3>
+            <p>BuyOne-GetOne</p>
+            <p class="price" id="product5-price">&#8377;60</p>
+            <div class="quantity-controls">
+                <button onclick="changeQuantity('product5', -1)">-</button>
+                <input type="text" id="product5-quantity" value="1" disabled>
+                <button onclick="changeQuantity('product5', 1)">+</button>
+            </div>
+            <button class="add-to-cart" onclick="addToCart('product5')">Add to Cart</button>
+            <button class="buy-now">Buy Now</button>
+        </div>
+
+        <div class="product">
+            <img src="oreo.jpg" alt="Product 6">
+            <h3 id="product6-name">Oreo Shake</h3>
+            <p>BuyOne-GetOne</p>
+            <p class="price" id="product6-price">&#8377;60</p>
+            <div class="quantity-controls">
+                <button onclick="changeQuantity('product6', -1)">-</button>
+                <input type="text" id="product6-quantity" value="1" disabled>
+                <button onclick="changeQuantity('product6', 1)">+</button>
+            </div>
+            <button class="add-to-cart" onclick="addToCart('product6')">Add to Cart</button>
+            <button class="buy-now">Buy Now</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>&copy; 2024 CampusBytes. All rights reserved.</p>
+    </div>
+
+    <script>
+        function closePopup() {
+            document.getElementById('popup').style.display = 'none';
+            document.getElementById('popup-overlay').style.display = 'none';
+            
+        }
+        // Sidebar open and close functions
+        function w3_open() {
+            document.getElementById("mySidebar").style.width = "250px";
+            document.body.style.overflow = "hidden";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidebar").style.width = "0";
+            document.body.style.overflow = "auto";
+        }
+
+        // Quantity control
+        function changeQuantity(productId, change) {
+            var quantityInput = document.getElementById(productId + "-quantity");
+            var currentQuantity = parseInt(quantityInput.value);
+            currentQuantity += change;
+            if (currentQuantity < 1) {
+                currentQuantity = 1;
+            }
+            quantityInput.value = currentQuantity;
+        }
+        let slideIndex = 0;
+        const slides = document.querySelectorAll('.carousel-slide');
+        const slidesContainer = document.getElementById('carouselSlides');
+
+        function updateSlidePosition() {
+            slidesContainer.style.transform = `translateX(-${slideIndex * 100}%)`;
+        }
+
+        function nextSlide() {
+            slideIndex = (slideIndex + 1) % slides.length; // Loop back to first slide
+            updateSlidePosition();
+        }
+
+        function prevSlide() {
+            slideIndex = (slideIndex - 1 + slides.length) % slides.length; // Loop to last slide if at first
+            updateSlidePosition();
+        }
+
+        // Add to Cart
+        // Add to Cart function
+// Add to Cart function
+// Add to Cart function
+function addToCart(productId) {
+    var productName = document.getElementById(productId + "-name").innerText;
+    var productPrice = document.getElementById(productId + "-price").innerText;
+    var productQuantity = document.getElementById(productId + "-quantity").value;
+
+    // Remove currency symbol (₹) from the price and convert to a number
+    productPrice = productPrice.replace(/[^0-9.-]+/g, "");
+
+    // Create product object
+    var product = {
+        item: productName, // Store the name as 'item'
+        price: productPrice,
+        quantity: productQuantity
+    };
+
+    // Retrieve cart from localStorage or initialize if it doesn't exist
+    var cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    // Check if product already exists in cart
+    var existingProduct = cart.find(item => item.item === productName); // Use item to check
+    if (existingProduct) {
+        existingProduct.quantity = (parseInt(existingProduct.quantity) + parseInt(productQuantity)).toString();
+    } else {
+        cart.push(product);
+    }
+
+    // Save updated cart to localStorage
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+    alert("Product added to cart!");
+}
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mario - Menu</title>
+  <style>
+    *{
+      text-decoration: none;
+      color: black;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #e8f0f7;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    header {
+      width: 100%;
+      background-color: #ffffff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      padding: 20px 0;
+      position: fixed;
+      top: 0;
+      z-index: 100;
+    }
+
+    header h1 {
+      margin: 10px 0;
+      color: #333;
+    }
+
+    main {
+      margin-top: 120px;
+      width: 90%;
+      max-width: 600px;
+      padding: 20px;
+      background: #ffffff;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+      border-radius: 10px;
+    }
+
+    h2 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    p.description {
+      text-align: justify;
+      font-size: 1.1em;
+      color: #555;
+      margin-bottom: 20px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      background: #f9f9f9;
+      padding: 15px;
+      margin: 10px 0;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    li span {
+      flex: 1;
+      font-weight: bold;
+      color: #555;
+    }
+
+    li .price {
+      margin-right: 20px;
+      font-size: 1em;
+      color: #333;
+    }
+
+    input[type="number"] {
+      width: 50px;
+      margin: 0 10px;
+      padding: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      padding: 8px 12px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    .view-cart {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #28a745;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+      display: inline-block;
+    }
+
+    .view-cart:hover {
+      background-color: #218838;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1><a href="new1.html">Mario - Menu</a></h1>
+  </header>
+  <main>
+    <h2>Our Special Menu</h2>
+    <p class="description">
+      "Juice up your day at Mario! Grab exciting Buy One Get One Free offers on juices and snack on favorites like bread omelets, egg noodles, chicken noodles, and flavorful chats. Mario is where taste meets affordability, making every bite worth it!"
+    </p>
+    <ul>
+      <!-- Menu items as before -->
+      <li>
+        <span>Fresh Orange Juice</span>
+        <span class="price">₹50</span>
+        <input type="number" id="quantity-orange-juice" min="1" value="1">
+        <button onclick="addToCart('Fresh Orange Juice', 50, 'quantity-orange-juice')">Add to Cart</button>
+      </li>
+      <li>
+        <span>Watermelon Juice</span>
+        <span class="price">₹40</span>
+        <input type="number" id="quantity-watermelon-juice" min="1" value="1">
+        <button onclick="addToCart('Watermelon Juice', 40, 'quantity-watermelon-juice')">Add to Cart</button>
+      </li>
+      <li>
+        <span>Bread Omelet</span>
+        <span class="price">₹30</span>
+        <input type="number" id="quantity-bread-omelet" min="1" value="1">
+        <button onclick="addToCart('Bread Omelet', 30, 'quantity-bread-omelet')">Add to Cart</button>
+      </li>
+      <li>
+        <span>Egg Noodles</span>
+        <span class="price">₹70</span>
+        <input type="number" id="quantity-egg-noodles" min="1" value="1">
+        <button onclick="addToCart('Egg Noodles', 70, 'quantity-egg-noodles')">Add to Cart</button>
+      </li>
+      <li>
+        <span>Chicken Noodles</span>
+        <span class="price">₹100</span>
+        <input type="number" id="quantity-chicken-noodles" min="1" value="1">
+        <button onclick="addToCart('Chicken Noodles', 100, 'quantity-chicken-noodles')">Add to Cart</button>
+      </li>
+      <li>
+        <span>Masala Chat</span>
+        <span class="price">₹40</span>
+        <input type="number" id="quantity-masala-chat" min="1" value="1">
+        <button onclick="addToCart('Masala Chat', 40, 'quantity-masala-chat')">Add to Cart</button>
+      </li>
+      <li>
+        <span>Chocolate Milkshake</span>
+        <span class="price">₹60</span>
+        <input type="number" id="quantity-choco-milkshake" min="1" value="1">
+        <button onclick="addToCart('Chocolate Milkshake', 60, 'quantity-choco-milkshake')">Add to Cart</button>
+      </li>
+      <li>
+        <span>Strawberry Milkshake</span>
+        <span class="price">₹60</span>
+        <input type="number" id="quantity-strawberry-milkshake" min="1" value="1">
+        <button onclick="addToCart('Strawberry Milkshake', 60, 'quantity-strawberry-milkshake')">Add to Cart</button>
+      </li>
+      <li>
+        <span>Banana Milkshake</span>
+        <span class="price">₹50</span>
+        <input type="number" id="quantity-banana-milkshake" min="1" value="1">
+        <button onclick="addToCart('Banana Milkshake', 50, 'quantity-banana-milkshake')">Add to Cart</button>
+      </li>
+      <li>
+        <span>Vanilla Milkshake</span>
+        <span class="price">₹60</span>
+        <input type="number" id="quantity-vanilla-milkshake" min="1" value="1">
+        <button onclick="addToCart('Vanilla Milkshake', 60, 'quantity-vanilla-milkshake')">Add to Cart</button>
+      </li>
+      <li>
+        <span>Mango Milkshake</span>
+        <span class="price">₹70</span>
+        <input type="number" id="quantity-mango-milkshake" min="1" value="1">
+        <button onclick="addToCart('Mango Milkshake', 70, 'quantity-mango-milkshake')">Add to Cart</button>
+      </li>
+    </ul>
+    <a href="cart.html" class="view-cart">View Cart</a>
+  </main>
+
+  <script>
+    // Retrieve cart from localStorage or initialize an empty array
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    // Function to add items to the cart
+    function addToCart(item, price, quantityId) {
+      const quantity = parseInt(document.getElementById(quantityId).value);
+      const cartItem = { item, price, quantity };
+
+      // Add cart item to the cart array
+      cart.push(cartItem);
+
+      // Store updated cart in localStorage
+      localStorage.setItem('cart', JSON.stringify(cart));
+
+      alert(`${quantity} x ${item} added to cart!`);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cafeteria - Menu</title>
+  <style>
+    *{
+      text-decoration: none;
+      color: black;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #e8f0f7;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    header {
+      width: 100%;
+      background-color: #ffffff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      padding: 20px 0;
+      position: fixed;
+      top: 0;
+      z-index: 100;
+    }
+
+    header h1 {
+      margin: 10px 0;
+      color: #333;
+    }
+
+    main {
+      margin-top: 120px;
+      width: 90%;
+      max-width: 600px;
+      padding: 20px;
+      background: #ffffff;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+      border-radius: 10px;
+    }
+
+    h2 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    p.description {
+      text-align: justify;
+      font-size: 1.1em;
+      color: #555;
+      margin-bottom: 20px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      background: #f9f9f9;
+      padding: 15px;
+      margin: 10px 0;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    li span {
+      flex: 1;
+      font-weight: bold;
+      color: #555;
+    }
+
+    li .price {
+      margin-right: 20px;
+      font-size: 1em;
+      color: #333;
+    }
+
+    input[type="number"] {
+      width: 50px;
+      margin: 0 10px;
+      padding: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      padding: 8px 12px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    .view-cart {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #28a745;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+      display: inline-block;
+    }
+
+    .view-cart:hover {
+      background-color: #218838;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1><a href="new1.html">Cafeteria - Menu</a></h1>
+  </header>
+  <main>
+    <h2>Our Special Menu</h2>
+    <p class="description">
+      "Our cafeteria offers a variety of snacks, drinks, and meals to satisfy your cravings throughout the day. From delicious sandwiches to tasty beverages, there's something for everyone!"
+    </p>
+    <ul>
+      <!-- Menu Items -->
+      <li>
+        <span>Sandwich</span>
+        <span class="price">₹60</span>
+        <input type="number" id="quantity-sandwich" min="1" value="1">
+        <button onclick="addToCart('Sandwich', 60, 'quantity-sandwich')">Add to Cart</button>
+      </li>
+      <li>
+        <span>Pasta</span>
+        <span class="price">₹120</span>
+        <input type="number" id="quantity-pasta" min="1" value="1">
+        <button onclick="addToCart('Pasta', 120, 'quantity-pasta')">Add to Cart</button>
+      </li>
+      <li>
+        <span>Grilled Chicken</span>
+        <span class="price">₹180</span>
+        <input type="number" id="quantity-grilled-chicken" min="1" value="1">
+        <button onclick="addToCart('Grilled Chicken', 180, 'quantity-grilled-chicken')">Add to Cart</button>
+      </li>
+      <li>
+        <span>Veg Wrap</span>
+        <span class="price">₹100</span>
+        <input type="number" id="quantity-veg-wrap" min="1" value="1">
+        <button onclick="addToCart('Veg Wrap', 100, 'quantity-veg-wrap')">Add to Cart</button>
+      </li>
+      <li>
+        <span>Fruit Juice</span>
+        <span class="price">₹50</span>
+        <input type="number" id="quantity-fruit-juice" min="1" value="1">
+        <button onclick="addToCart('Fruit Juice', 50, 'quantity-fruit-juice')">Add to Cart</button>
+      </li>
+      <li>
+        <span>Ice Cream</span>
+        <span class="price">₹80</span>
+        <input type="number" id="quantity-ice-cream" min="1" value="1">
+        <button onclick="addToCart('Ice Cream', 80, 'quantity-ice-cream')">Add to Cart</button>
+      </li>
+      <!-- New Items -->
+      <li>
+        <span>Chicken Sandwich</span>
+        <span class="price">₹120</span>
+        <input type="number" id="quantity-chicken-sandwich" min="1" value="1">
+        <button onclick="addToCart('Chicken Sandwich', 120, 'quantity-chicken-sandwich')">Add to Cart</button>
+      </li>
+      <li>
+        <span>Cheese Pizza</span>
+        <span class="price">₹250</span>
+        <input type="number" id="quantity-cheese-pizza" min="1" value="1">
+        <button onclick="addToCart('Cheese Pizza', 250, 'quantity-cheese-pizza')">Add to Cart</button>
+      </li>
+      <li>
+        <span>Veg Burger</span>
+        <span class="price">₹90</span>
+        <input type="number" id="quantity-veg-burger" min="1" value="1">
+        <button onclick="addToCart('Veg Burger', 90, 'quantity-veg-burger')">Add to Cart</button>
+      </li>
+      <li>
+        <span>Chocolate Milkshake</span>
+        <span class="price">₹150</span>
+        <input type="number" id="quantity-chocolate-milkshake" min="1" value="1">
+        <button onclick="addToCart('Chocolate Milkshake', 150, 'quantity-chocolate-milkshake')">Add to Cart</button>
+      </li>
+      <li>
+        <span>French Fries</span>
+        <span class="price">₹70</span>
+        <input type="number" id="quantity-french-fries" min="1" value="1">
+        <button onclick="addToCart('French Fries', 70, 'quantity-french-fries')">Add to Cart</button>
+      </li>
+      <li>
+        <span>Hot Dog</span>
+        <span class="price">₹120</span>
+        <input type="number" id="quantity-hot-dog" min="1" value="1">
+        <button onclick="addToCart('Hot Dog', 120, 'quantity-hot-dog')">Add to Cart</button>
+      </li>
+    </ul>
+    <a href="cart.html" class="view-cart">View Cart</a>
+  </main>
+
+  <script>
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    function addToCart(item, price, quantityId) {
+      const quantity = parseInt(document.getElementById(quantityId).value);
+      const cartItem = { item, price, quantity };
+      
+      // Checking if the item already exists in the cart
+      const existingItemIndex = cart.findIndex(cartItem => cartItem.item === item);
+      
+      if (existingItemIndex !== -1) {
+        // If item exists, update quantity
+        cart[existingItemIndex].quantity += quantity;
+      } else {
+        // If item doesn't exist, add new item to cart
+        cart.push(cartItem);
+      }
+      
+      // Saving updated cart to localStorage
+      localStorage.setItem('cart', JSON.stringify(cart));
+      
+      alert(`${quantity} x ${item} added to cart!`);
+    }
+  </script>
+</body>
+</html>

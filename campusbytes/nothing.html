@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eshwar College of Engineering</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #d4f7d4, #ffe5b4); /* Light Green to Light Orange Gradient */
+            display: flex;
+            flex-direction: column;
+            color: #333; /* Adjusted text color for better contrast with the light background */
+        }
+        header {
+            width: 100%;
+            background: linear-gradient(135deg, #0a2a88, #f4a72a); /* Blue to Yellow Gradient */
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1em 0;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1em;
+        }
+        .header-content img {
+            height: 100px;
+            width: auto;
+        }
+        .header-text {
+            text-align: left;
+        }
+        .header-text h1 {
+            margin: 0;
+            font-size: 1.8em;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+        }
+        .header-text p {
+            margin: 0;
+            font-size: 0.9em;
+        }
+        .content {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding-top: 2em;
+        }
+        .poster-container {
+            width: 80%;
+            height: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            margin-top: 2em;
+            border: 2px solid #ccc;
+            background-color: white;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+        }
+        .poster-container img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+    </style>
+    <script>
+        function navigateToNewPage() {
+            window.location.href = "new1.html";
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <a href="new1.html"><img src="logo.jpg" alt="Eshwar Logo"></a>
+            <div class="header-text">
+                <h1>Sri Eshwar College of Engineering</h1>
+                <p>Leadership & Excellence</p>
+            </div>
+        </div>
+    </header>
+    <div class="content">
+        <div class="poster-container" onclick="navigateToNewPage()">
+            <img src="poster.jpg" alt="College Poster">
+        </div>
+    </div>
+    <script>
+        function navigateToNewPage() {
+            window.location.href = "cardhover.html";
+        }
+    </script>
+</body>
+</html>

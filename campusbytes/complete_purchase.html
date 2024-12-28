@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f9fa;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    header {
+      width: 100%;
+      background-color: #ffffff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      padding: 20px 0;
+    }
+
+    header h1 {
+      margin: 10px 0;
+      color: #333;
+    }
+
+    .payment-container {
+      margin-top: 60px;
+      width: 90%;
+      max-width: 600px;
+      padding: 20px;
+      background: #ffffff;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+      border-radius: 10px;
+    }
+
+    h2 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    table, th, td {
+      border: 1px solid #ddd;
+    }
+
+    th, td {
+      padding: 10px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f1f1f1;
+    }
+
+    .total-price {
+      text-align: right;
+      margin-top: 20px;
+      font-size: 1.2em;
+      font-weight: bold;
+    }
+
+    .payment-button {
+      display: block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #28a745;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+      text-align: center;
+    }
+
+    .payment-button:hover {
+      background-color: #218838;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Payment Details</h1>
+  </header>
+  <div class="payment-container">
+    <h2>Your Cart Summary</h2>
+    <table id="payment-table">
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>Quantity</th>
+          <th>Price</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Payment items will be dynamically added here -->
+      </tbody>
+    </table>
+    <div class="total-price">
+      Total: ₹<span id="total-price">0</span>
+    </div>
+    <a href="demo.html" class="payment-button">Proceed to Payment</a>
+  </div>
+
+  <script>
+    // Retrieve cart data from sessionStorage
+    let cart = JSON.parse(sessionStorage.getItem('cart')) || [];
+
+    // Function to display cart items on the payment page
+    function displayPaymentDetails() {
+      const paymentTable = document.getElementById('payment-table').getElementsByTagName('tbody')[0];
+      const totalPriceElement = document.getElementById('total-price');
+      let totalPrice = 0;
+
+      // Clear the current table content
+      paymentTable.innerHTML = '';
+
+      // Loop through cart items and add them to the table
+      cart.forEach(item => {
+        const row = paymentTable.insertRow();
+
+        const cell1 = row.insertCell(0);
+        const cell2 = row.insertCell(1);
+        const cell3 = row.insertCell(2);
+        const cell4 = row.insertCell(3);
+
+        cell1.textContent = item.item;
+        cell2.textContent = item.quantity;
+        cell3.textContent = '₹' + item.price;
+        cell4.textContent = '₹' + (item.price * item.quantity);
+
+        totalPrice += item.price * item.quantity;
+      });
+
+      // Update total price
+      totalPriceElement.textContent = totalPrice;
+    }
+
+    // Call the function to display the payment details
+    displayPaymentDetails();
+  </script>
+</body>
+</html>

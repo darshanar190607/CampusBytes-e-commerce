@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edunexis</title>
+  <style>
+    body {
+      background: linear-gradient(90deg, #3498db, #2ecc71, #e74c3c, #9b59b6, #fd79a8, #8e44ad);
+      background-size: 400% 400%;
+      animation: gradientAnimation 10s ease infinite;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    @keyframes gradientAnimation {
+      0% { background-position: 0% 50%; }
+      25% { background-position: 50% 100%; }
+      50% { background-position: 100% 50%; }
+      75% { background-position: 50% 0%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .form-container {
+      background-color: white;
+      color: black;
+      border-radius: 15px;
+      text-align: center;
+      height: auto;
+      width: 400px;
+      padding: 20px 30px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .form-container h2 {
+      margin-bottom: 20px;
+      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    }
+
+    .form-container label {
+      color: black;
+      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+      display: block;
+      font-size: large;
+      text-align: left;
+      margin: 10px 0 5px 0;
+    }
+
+    .form-container input[type="text"],
+    .form-container input[type="email"],
+    .form-container input[type="password"],
+    .form-container select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+
+    .form-container button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      background-color: #9b59b6;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .form-container button:hover {
+      background-color: #512066;
+      transition: background-color 0.3s ease;
+    }
+
+    .form-container a {
+      color: #3498db;
+      text-decoration: none;
+    }
+
+    .form-container a:hover {
+      text-decoration: underline;
+    }
+
+    .form-container .login-link {
+      margin-top: 15px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container" id="signup">
+    <h2>Sign Up</h2>
+    <form id="signupForm">
+      <label for="name">Full Name:</label>
+      <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+      
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" placeholder="Enter your email" required>
+      
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" placeholder="Enter your password" required>
+      
+      <label for="role">Role:</label>
+      <select id="role" name="role" required>
+        <option value="student">Student</option>
+        <option value="teacher">Teacher</option>
+      </select>
+      
+      <button type="button" onclick="handleSignup()">Sign Up</button>
+    </form>
+    <div class="login-link">
+      Already have an account? <a href="#" onclick="toggleForms()">Login here</a>
+    </div>
+  </div>
+
+  <div class="form-container" id="login" style="display: none;">
+    <h2>Login</h2>
+    <form id="loginForm">
+      <label for="loginEmail">Email:</label>
+      <input type="email" id="loginEmail" name="email" placeholder="Enter your email" required>
+      
+      <label for="loginPassword">Password:</label>
+      <input type="password" id="loginPassword" name="password" placeholder="Enter your password" required>
+      
+      <button type="button" onclick="handleLogin()">Login</button>
+    </form>
+    <div class="login-link">
+      Don't have an account? <a href="#" onclick="toggleForms()">Sign up here</a>
+    </div>
+  </div>
+
+  <script>
+    function toggleForms() {
+      const signupForm = document.getElementById('signup');
+      const loginForm = document.getElementById('login');
+      signupForm.style.display = signupForm.style.display === 'none' ? 'block' : 'none';
+      loginForm.style.display = loginForm.style.display === 'none' ? 'block' : 'none';
+    }
+
+    function handleSignup() {
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      const role = document.getElementById('role').value;
+
+      if (name && email && password && role) {
+        const user = { name, email, password, role };
+        localStorage.setItem('user', JSON.stringify(user));
+        alert('Signup successful! Please login.');
+        toggleForms();
+      } else {
+        alert('Please fill in all fields.');
+      }
+    }
+
+    function handleLogin() {
+      const email = document.getElementById('loginEmail').value;
+      const password = document.getElementById('loginPassword').value;
+      const storedUser = JSON.parse(localStorage.getItem('user'));
+
+      if (storedUser && storedUser.email === email && storedUser.password === password) {
+        alert(`Welcome back, ${storedUser.name}!`);
+        window.location.href="new1.html";
+
+      } else {
+        alert('Invalid email or password.');
+      }
+    }
+  </script>
+</body>
+</html>

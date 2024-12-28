@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CampusBytes</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #e8f0f7; /* Gentle blue background */
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    header {
+      width: 100%;
+      background-color: #ffffff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      padding: 8px 0;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 100;
+    }
+
+    header img {
+      height: 65px; /* Adjusted height */
+      width: auto; /* Maintain aspect ratio */
+    }
+
+    header h1 {
+      margin: 3px 0;
+      color: #333;
+    }
+
+    .cards-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px; /* Adjust gap between cards */
+      margin-top: 150px; /* Increased space below header */
+      flex-wrap: wrap; /* Allow cards to wrap on smaller screens */
+      padding: 0 20px;
+    }
+
+    .card {
+      width: 600px; /* Adjust width for responsiveness */
+      height: 300px; /* Adjust height */
+      border-radius: 12px;
+      position: relative;
+      cursor: pointer;
+      overflow: hidden;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Gentle shadow for depth */
+      background-color: #ffffff;
+      transition: transform 0.3s ease-in-out, width 0.5s ease-in-out, height 0.5s ease-in-out;
+    }
+
+    .card:hover {
+      transform: rotateY(10deg) rotateX(5deg); /* Slight rotation on hover */
+    }
+
+    .card .image-box {
+      width: 100%;
+      height: 100%; /* Adjust image height */
+      border-radius: inherit;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .card .image-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .card:hover .image-box img {
+      transform: scale(1.1);
+    }
+
+    .card .content {
+      position: absolute;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.8);
+      color: #ffffff;
+      width: 100%;
+      max-height: 30%;
+      overflow-y: auto;
+      padding: 15px;
+      text-align: center;
+      opacity: 0;
+      transition: opacity 0.3s ease-in-out;
+    }
+
+    .card:hover .content {
+      opacity: 1;
+    }
+
+    .card.expanded {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 1000;
+      border-radius: 0;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .card.expanded .image-box {
+      width: 80%;
+      height: 80%;
+    }
+
+    .card.expanded .image-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .card.expanded .content {
+      opacity: 1;
+      background: rgba(0, 0, 0, 0.9);
+      padding: 20px;
+      font-size: 1.2em;
+      max-height: 30%;
+      overflow-y: auto;
+      width: 100%;
+      text-align: center;
+    }
+
+    /* Responsiveness for smaller screens */
+    @media (max-width: 768px) {
+      .card {
+        width: 250px;
+        height: 300px;
+      }
+
+      .card .image-box {
+        height: 60%; /* Adjust for smaller screens */
+      }
+
+      .cards-container {
+        gap: 15px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .card {
+        width: 200px;
+        height: 250px;
+      }
+
+      .cards-container {
+        gap: 10px;
+      }
+    }
+
+  </style>
+</head>
+<body>
+  <header>
+    <a href="new1.html"><img src="web logo.jpg" alt="CampusBytes Logo" /></a>
+  </header>
+
+  <div class="cards-container">
+    <div class="card" onclick="expandCard(this, 'page1.html')">
+      <div class="image-box">
+        <img src="Amenitycenter.jpeg" alt="Card 1 Image">
+      </div>
+      <div class="content">
+        <h3>Amenity</h3>
+        <p>"Amenity is your all-day dining spot! From flavorful biryani starting at just ₹100 to a variety of snacks, it’s the perfect place to grab a meal, relax, and enjoy quality food at affordable prices—any time of the day."</p>
+      </div>
+    </div>
+
+    <div class="card" onclick="expandCard(this, 'page2.html')">
+      <div class="image-box">
+        <img src="Mario.jpg" alt="Mario">
+      </div>
+      <div class="content">
+        <h3>Mario</h3>
+        <p>"Juice up your day at Mario! Grab exciting Buy One Get One Free offers on juices and snack on favorites like bread omelets, egg noodles, chicken noodles, and flavorful chats. Mario is where taste meets affordability, making every bite worth it!"</p>
+      </div>
+    </div>
+
+    <div class="card" onclick="expandCard(this, 'page3.html')">
+      <div class="image-box">
+        <img src="cafe.jpg" alt="Card 3 Image">
+      </div>
+      <div class="content">
+        <h3>Cafeteria</h3>
+        <p>"Welcome to Snack Haven – where every craving meets its match! From crispy French fries to juicy chicken nuggets, creamy coffee to cool ice creams, piping hot momos to delightful badam milk – we’ve got a bite and sip for every mood. Come hungry, leave happy!"</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function expandCard(card, url) {
+      const expandedCard = document.querySelector('.card.expanded');
+      if (expandedCard) {
+        // If already expanded, navigate to the URL
+        window.location.href = url;
+      } else {
+        // Expand the clicked card
+        card.classList.add('expanded');
+      }
+    }
+  </script>
+</body>
+</html>

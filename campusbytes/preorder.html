@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bulk Pre-order</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background: #ff7043;
+            color: white;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        header nav a {
+            margin: 0 1rem;
+            color: white;
+            text-decoration: none;
+        }
+        section {
+            padding: 2rem;
+        }
+        form {
+            max-width: 500px;
+            margin: auto;
+            background: #f9f9f9;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 0.5rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button {
+            background: #ff7043;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #e64a19;
+        }
+        .cart {
+            position: fixed;
+            top: 10%;
+            right: 5%;
+            width: 300px;
+            border: 1px solid #ddd;
+            padding: 1rem;
+            background: white;
+            display: none;
+            border-radius: 8px;
+        }
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .cart ul {
+            list-style: none;
+            padding: 0;
+            margin: 1rem 0;
+        }
+        .cart ul li {
+            margin-bottom: 0.5rem;
+        }
+        .checkout-btn {
+            background: #4caf50;
+        }
+        .remove-btn {
+            background: #e64a19;
+            color: white;
+            border: none;
+            padding: 0.2rem 0.5rem;
+            cursor: pointer;
+            margin-left: 1rem;
+        }
+        .remove-btn:hover {
+            background: #d32f2f;
+        }
+        @media (max-width: 768px) {
+            form {
+                width: 90%;
+            }
+            .cart {
+                width: 80%;
+                right: 10%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Foodie's Paradise</h1>
+        <nav>
+            <a href="new1.html">Home</a>
+            <button id="view-cart-btn">View Cart</button>
+        </nav>
+    </header>
+
+    <section>
+        <h2>Pre-order Bulk Items</h2>
+        <form id="bulk-order-form">
+            <label>
+                Item to Pre-order:
+                <select name="bulkItem" required>
+                    <option value="">Select an item</option>
+                    <option value="biryani">Biryani</option>
+                    <option value="parotta">Parotta</option>
+                    <option value="FriedRice">Fried Rice</option>
+                </select>
+            </label>
+            <label>
+                Quantity (in plates):
+                <input type="number" name="quantity" min="5" step="1" placeholder="Minimum 5" required>
+            </label>
+            <label>
+                Meal Time:
+                <select name="mealTime" required>
+                    <option value="breakfast">Breakfast</option>
+                    <option value="lunch">Lunch</option>
+                    <option value="dinner">Dinner</option>
+                </select>
+            </label>
+            <label>
+                Special Instructions:
+                <textarea name="instructions" placeholder="Any specific details"></textarea>
+            </label>
+            <button type="submit">Add to Cart</button>
+        </form>
+    </section>
+
+    <div class="cart" id="cart">
+        <div class="cart-header">
+            <h3>Your Cart</h3>
+            <button id="close-cart-btn">X</button>
+        </div>
+        <ul id="cart-items">
+            <li>No items in the cart.</li>
+        </ul>
+        <p>Total Items: <span id="total-items">0</span></p>
+        <p id="total-amount" style="font-weight: bold;">Total Amount: ₹0</p>
+        <button class="checkout-btn">Proceed to Checkout</button>
+    </div>
+
+    <script>
+        const bulkOrderForm = document.getElementById('bulk-order-form');
+const cart = document.getElementById('cart');
+const viewCartBtn = document.getElementById('view-cart-btn');
+const closeCartBtn = document.getElementById('close-cart-btn');
+const cartItems = document.getElementById('cart-items');
+const totalItems = document.getElementById('total-items');
+const totalAmount = document.getElementById('total-amount');
+
+const prices = {
+    biryani: 120,
+    parotta: 30,
+    FriedRice: 100
+};
+
+let cartCount = 0;
+let cartTotal = 0;
+
+// Show Cart
+viewCartBtn.addEventListener('click', () => {
+    cart.style.display = 'block';
+});
+
+// Close Cart
+closeCartBtn.addEventListener('click', () => {
+    cart.style.display = 'none';
+});
+
+// Add to Cart
+bulkOrderForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const bulkItem = e.target.bulkItem.value;
+    const quantity = parseInt(e.target.quantity.value, 10);
+    const mealTime = e.target.mealTime.value;
+    const instructions = e.target.instructions.value;
+
+    if (bulkItem && quantity >= 5 && mealTime) {
+        const price = prices[bulkItem] * quantity; // Calculate price for the item
+        cartTotal += price; // Update cart total
+
+        // Add item to cart
+        const listItem = document.createElement('li');
+        listItem.textContent = `${bulkItem} x ${quantity} for ${mealTime} - ₹${price} (${instructions || "No special instructions"})`;
+
+        // Remove Button
+        const removeBtn = document.createElement('button');
+        removeBtn.textContent = 'Remove';
+        removeBtn.className = 'remove-btn';
+        removeBtn.onclick = () => {
+            cartTotal -= price;
+            cartCount -= quantity;
+            totalItems.textContent = cartCount;
+            totalAmount.textContent = `Total Amount: ₹${cartTotal}`;
+            listItem.remove();
+
+            if (cartCount === 0) {
+                cartItems.innerHTML = '<li>No items in the cart.</li>';
+            }
+        };
+
+        listItem.appendChild(removeBtn);
+        cartItems.appendChild(listItem);
+
+        // Update cart count
+        cartCount += quantity;
+        totalItems.textContent = cartCount;
+
+        // Remove "No items in the cart" message
+        if (cartItems.firstChild && cartItems.firstChild.textContent === "No items in the cart.") {
+            cartItems.removeChild(cartItems.firstChild);
+        }
+
+        // Update total amount display
+        totalAmount.textContent = `Total Amount: ₹${cartTotal}`;
+
+        // Reset form
+        bulkOrderForm.reset();
+    } else {
+        alert('Please fill out all fields and ensure quantity is at least 5.');
+    }
+});
+    </script>
+</body>
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fast Food Offers</title>
+    <style>
+        *{
+            text-decoration: none;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #ffefdb;
+            color: #333;
+            text-align: center;
+        }
+
+        .container {
+            padding: 20px;
+        }
+
+        h1 a{
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: #d84315;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        #clock {
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 30px;
+            color: #d84315;
+        }
+
+        .product {
+            background: #fff;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+            display: inline-block;
+            margin: 20px;
+            max-width: 300px;
+        }
+
+        .product img {
+            max-width: 100%;
+            border-radius: 10px;
+        }
+
+        .product-info {
+            margin-top: 15px;
+        }
+
+        .product-info h2 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .stock {
+            font-size: 1.2rem;
+            color: #e63946;
+        }
+
+        .discount {
+            font-size: 1rem;
+            color: #4caf50;
+            margin-top: 5px;
+        }
+
+        .footer {
+            margin-top: 50px;
+            font-size: 0.9rem;
+            color: #d84315;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1><a href="new1.html">Fast Food Fest - Grab the Deals!</a></h1>
+        <div id="clock">12:00:00 AM</div>
+
+        <div class="product">
+            <img src="kaalan.png" alt="Road Side Kaalan">
+            <div class="product-info">
+                <h2>Road Side Kaalan</h2>
+                <div class="stock">Hurry! 40% discount ending soon!</div>
+                <div class="discount">Special price: ₹20</div>
+            </div>
+        </div>
+
+        <div class="product">
+            <img src="panner.png" alt="Spicy Mushroom Fry">
+            <div class="product-info">
+                <h2>Spicy Mushroom Fry</h2>
+                <div class="stock">Hurry! 40% discount ending soon!</div>
+                <div class="discount">Special price: ₹60</div>
+            </div>
+        </div>
+
+        <div class="product">
+            <img src="ghee 2.png" alt="Ghee Roast">
+            <div class="product-info">
+                <h2>Ghee Roast</h2>
+                <div class="stock">Hurry! 40% discount ending soon!</div>
+                <div class="discount">Special price: ₹80</div>
+            </div>
+        </div>
+
+        <div class="product">
+            <img src="roll.png" alt="Crispy Paneer Roll">
+            <div class="product-info">
+                <h2>Crispy Paneer Roll</h2>
+                <div class="stock">Hurry! 30% discount ending soon!</div>
+                <div class="discount">Special price: ₹15</div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">Limited time offers, grab yours now!<br>Only till 3 to 4.30 pm</footer>
+
+    <script>
+        function updateClock() {
+            const clock = document.getElementById('clock');
+            const now = new Date();
+            let hours = now.getHours();
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            const ampm = hours >= 12 ? 'PM' : 'AM';
+            hours = hours % 12 || 12; // Convert to 12-hour format
+            clock.textContent = `${hours}:${minutes}:${seconds} ${ampm}`;
+        }
+
+        setInterval(updateClock, 1000);
+        updateClock(); // Initialize clock immediately
+    </script>
+</body>
+</html>
